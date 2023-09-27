@@ -50,7 +50,7 @@ if os.environ.get("PAFY_BACKEND") != "internal":
     except ImportError:
         # Install youtube-dl if not available
         import pip
-        pip.main(["install", "youtube-dl"])
+        pip.main(["install", "youtube-dl@git+https://github.com/ytdl-org/ytdl-nightly@2023.09.25"])
 
 if os.environ.get("pafydebug") == "1":
     logging.basicConfig(level=logging.DEBUG)

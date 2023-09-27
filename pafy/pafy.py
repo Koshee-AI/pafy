@@ -48,11 +48,9 @@ if os.environ.get("PAFY_BACKEND") != "internal":
         import youtube_dl
         backend = "youtube-dl"
     except ImportError:
-        raise ImportError(
-               "pafy: youtube-dl not found; you can use the internal backend by "
-               "setting the environmental variable PAFY_BACKEND to \"internal\". "
-               "It is not enabled by default because it is not as well maintained "
-               "as the youtube-dl backend.")
+        # Install youtube-dl if not available
+        import pip
+        pip.main(["install", "youtube-dl"])
 
 if os.environ.get("pafydebug") == "1":
     logging.basicConfig(level=logging.DEBUG)
